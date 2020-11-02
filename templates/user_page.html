@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+	<title>HTML Editor - Full Version</title>
+</head>
+<body>
+<p><span style="font-size:22px;"><strong>User Page&nbsp;</strong></span></p>
+
+<p style="text-align: center;"><em><span style="font-size:22px;"><strong>Please fill out the questionnaire</strong></span></em></p>
+
+<form action="user_profile" enctype="multipart/form-data" id="questionnaire" method="post" name="questionnaire" target="_self">
+<ul>
+	<div style="color:red;">{{completion_message}}</div>
+	<li>
+	<p>Your age&nbsp; &nbsp; &nbsp;&nbsp;<input name="age" size="5" type="text" />&nbsp; years old&nbsp;
+		<div style="color:red;">{{age_message}}</div>
+	</li>
+	<li>
+	<p>Your height&nbsp;&nbsp;<input name="height" size="5" type="text" />&nbsp;in cm</p>
+	</li>
+	<li>
+	<p>Your weight&nbsp;<input name="weight" size="5" type="text" />&nbsp;in kg</p>
+	</li>
+	<li>
+	<p>Your physical activity&nbsp;&nbsp;<input name="activity" type="radio" value="health_seeker" />&nbsp;Health seeker&nbsp;&nbsp;<input name="activity" type="radio" value="active_adult" />Active adult&nbsp;<input name="activity" type="radio" value="athletic" />&nbsp;Athletic&nbsp;<input name="activity" type="radio" value="elite_athletic" />Elite athletic</p>
+	</li>
+	<li>
+	<p>Your general heath&nbsp; &nbsp; &nbsp;&nbsp;<input name="health" type="radio" value="healthy" />&nbsp;healthy&nbsp;<input name="health" type="radio" value="has_gerenal_condition" />&nbsp;has gerenal condition</p>
+	</li>
+	<li>
+	<p>Your talk during those activities&nbsp;<input name="talk" type="radio" value="breathe_easy" />&nbsp;easy breathe and talk&nbsp;</p>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ​​​<input name="talk" type="radio" value="breath_hard_still_can" />&nbsp;breathe hard but still can talk&nbsp;​<br />
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br />
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<input name="talk" type="radio" value="breathe_cannot" />&nbsp;rapidly breathe and can not hold the talk&nbsp;<br />
+	&nbsp;</li>
+	<li>Intensity of those activities on a 1-10 scale:&nbsp;<input name="scale" size="5" type="text" /></li>
+	<li>Hiking experience in the last two months:&nbsp;<input name="experience" type="radio" value="yes" />&nbsp;Yes&nbsp;<input name="experience" type="radio" value="no" />No</li>
+</ul>
+
+<p style="text-align: center;"><span style="background-color:#FFF0F5;"><input name="CalculateButton" type="submit" value="Calculate" /></span></p>
+</form>
+
+<p>&nbsp;</p>
+</body>
+</html>
