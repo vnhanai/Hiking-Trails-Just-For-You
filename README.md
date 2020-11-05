@@ -1,4 +1,4 @@
 Hiking Trails Just for You
 
-To run
+To run:
 python3 server.py
