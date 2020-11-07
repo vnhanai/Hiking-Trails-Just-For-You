@@ -1,4 +1,3 @@
-
 from trail import Trail, TrailList
 
 aTrail = Trail(name="Test Trail 1", difficulty=3, distanceAway=8.02, length=1.2, elevation=-0.8, description="testing printTrail", latitude=23.003, longitude=-34.043)

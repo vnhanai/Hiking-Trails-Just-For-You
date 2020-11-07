@@ -5,5 +5,12 @@
 </head>
 <body>
     <h1>Trails</h1>
+    {% for trail in trails %}
+    <li>{{trail.getName()}}</li>
+    <li>{{trail.getDescription()}}</li>
+    <li>Length: {{trail.getLength()}}</li>
+    <li>Elevation: {{trail.getElevation()}}</li>
+    <br>
+    {% endfor %}
 </body>
 </html>

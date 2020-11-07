@@ -1,5 +1,5 @@
 class Trail:
-    'Class for trail data'
+    """Class for trail data"""
     def __init__(self, name, distanceAway, length, elevation, description, latitude, longitude, difficulty):
         self._name = name
         self._distanceAway = distanceAway
@@ -59,7 +59,7 @@ class Trail:
         self._difficulty = newDifficulty
         
     def printTrail(self):
-    'for testing'
+        """for testing"""
         print("Name:" + self._name)
         print(self._distanceAway, "miles away")
         print("Length:", self._length)
@@ -71,8 +71,8 @@ class Trail:
         
 class TrailList:
         
-    def __init__(self, newTrail):
-        self._trails = [newTrail]
+    def __init__(self):
+        self._trails = []
             
     def addTrail(self, newTrail):
         self._trails.append(newTrail)
@@ -81,11 +81,14 @@ class TrailList:
         aTrail = self._trails[index]
         return aTrail
     
+    def getAllTrails(self):
+        return self._trails
+    
     def deleteTrail(self, index):
         del self._trails[index]
         
     def printList(self):
-    'for testing'
+        """for testing"""
         for trail in self._trails:
             trail.printTrail()
  
