@@ -7,7 +7,7 @@ class User:
     """
     represents a user with 8 personal data to decide the fitness level.
     """
-    def __init__(self, age, height, weight, scale, talk_test, activity_level, hiking_exp, general_health):
+    def __init__(self, age, height, weight, scale, talk_test, activity_level, hiking_exp, general_health, email_address):
         self._age = age
         self._height = height
         self._weight = weight
@@ -16,6 +16,7 @@ class User:
         self._activity_level = activity_level
         self._hiking_exp = hiking_exp
         self._general_health = general_health
+        self._email_address = email_address
 
     def set_age(self, new_age):
         self._age = new_age
