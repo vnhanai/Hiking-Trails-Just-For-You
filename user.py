@@ -18,27 +18,36 @@ class User:
         self._general_health = general_health
 
     def set_age(self, new_age):
+        """sets age which has an int type"""
         self._age = new_age
 
-    def set_height (self, new_height):
+    def set_height(self, new_height):
+        """sets height, which is set in meter and is a float type """
         self._height = new_height
 
     def set_weight(self, new_weight):
+        """sets weight, which is set in kg and is a float type"""
         self._weight = new_weight
 
     def set_scale(self, new_scale):
+        """sets users' self-report of activity's intensity on a scale from 1 to 10,
+        which 10 is the highest intensity. This is an int type"""
         self._scale = new_scale
 
     def set_talk_test(self, new_talk_test):
+        """sets users' self-report of activity's intensity based on breathing difficulties, this is a string type"""
         self._talk_test = new_talk_test
 
     def set_activity_level(self, new_activity):
+        """sets activity level, which has a string type"""
         self._activity_level = new_activity
 
     def set_hiking_exp(self, new_hiking_exp):
+        """sets hiking experience, which is a string type"""
         self._hiking_exp = new_hiking_exp
 
     def set_general_health(self, new_health):
+        """sets the medical health reported"""
         self._general_health = new_health
 
     def get_age(self):
@@ -66,9 +75,11 @@ class User:
         return self._general_health
 
     def calculate_bmi(self):
+        """returns BMI which is a float type"""
         return self._weight/(self._height**2)
 
     def calculate_maximal_heart_rate(self):
+        """returns maximal heart rate, which is an int type"""
         return 220-self._age
 
 
@@ -81,12 +92,14 @@ class Recommender:
 
 
 class LevelRecommender(Recommender):
+    """fitness level recommender is a type of Recommender"""
     def __init__(self):
         self._level = ""
         self.message = ""
         self.score = 0
 
     def recommend_me(self, user):
+        """use User data to calculate total score, which then is used to decide fitness level"""
         if user.get_talk_test() == "breathe hard but still can talk":
             self.score += 1
         if user.get_talk_test() == "rapidly breathe and can not hold the talk":
@@ -117,17 +130,17 @@ class LevelRecommender(Recommender):
             self._level = LevelScale.LOW
             self.message += "Your fitness level is " + str(self._level) + "\n" \
                             "Your target heart rate is from " + str(user.get_age()) + " to " + "\n" +\
-                            str(0.5 * (user.calculate_maximal_heart_rate()))
+                            str(int(0.5 * (user.calculate_maximal_heart_rate())))
         if 5 <= self.score <= 7:
             self._level = LevelScale.MODERATE
             self.message += "Your fitness level is " + str(self._level) + "." + "\n" +\
-                            "Your target heart rate is from " + str(0.5*user.calculate_maximal_heart_rate()) + "\n" + \
-                            " to " + str(0.7*user.calculate_maximal_heart_rate())
+                            "Your target heart rate is from " + str(int(0.5*user.calculate_maximal_heart_rate())) + "\n" + \
+                            " to " + str(int(0.7*user.calculate_maximal_heart_rate()))
         else:
             self._level = LevelScale.VIGOROUS
             self.message += "Your fitness level is " + str(self._level) + "." + "\n" +\
-                            "Your target heart rate is from " + str(0.71*user.calculate_maximal_heart_rate()) + \
-                            " to " + str(0.85*user.calculate_maximal_heart_rate())
+                            "Your target heart rate is from " + str(int(0.71*user.calculate_maximal_heart_rate()))+ \
+                            " to " + str(int(0.85*user.calculate_maximal_heart_rate()))
 
     def print_message(self):
         return self.message
@@ -147,6 +160,7 @@ class LevelScale:
 
 
 class Message:
+    """represents message that the system presents for user on the UI"""
     def __init__(self):
         pass
 
@@ -155,6 +169,7 @@ class Message:
 
 
 class Verifier:
+    """represent verifier who will verify if user's input is valid and complete as required """
     def __init__(self):
         pass
 
@@ -163,6 +178,7 @@ class Verifier:
 
 
 class AgeVerifier:
+    """AgeVerifier is a type of Verifier"""
 
     def __init__(self):
         self.MINIMAL_AGE = 6
@@ -180,6 +196,7 @@ class AgeVerifier:
 
 
 class CompletionVerifier:
+    """CompletionVerifier is a type of Verifier"""
 
     def __init__(self):
         self.message = ""

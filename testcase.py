@@ -24,7 +24,7 @@ else:
 print("Test Case2")
 user_2 = User(age=25, height=170, weight=0, scale=7,
               general_health="healthy", talk_test = "rapidly breathe and can not hold the talk",
-              activity_level= "Active adult", hiking_exp="Yes")
+              activity_level="Active adult", hiking_exp="Yes")
 
 age_verify_2 = AgeVerifier()
 if not age_verify_2.verify_me(user_2):
