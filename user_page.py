@@ -33,16 +33,16 @@ def user_profile():
     if request.method == 'POST':
         profile = request.form
         age = profile.get('age')
-        if age is not None:
+        if len(age) > 0:
             user.set_age(int(age))
         height = profile.get('height')
-        if height is not None:
+        if len(height) > 0:
             user.set_height(float(height))
         weight = profile.get('weight')
-        if weight is not None:
+        if len(weight) > 0:
             user.set_weight(float(weight))
         scale = profile.get('scale')
-        if scale is not None:
+        if len(scale) > 0:
             user.set_scale(int(scale))
         user.set_general_health(profile.get('health'))
         user.set_talk_test(profile.get('talk'))

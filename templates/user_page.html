@@ -18,10 +18,10 @@
 <p>&nbsp;</p>
 
 <ul>
-	<li>
-	<ul>
+	<div style="color:Tomato;">{{completion_message}}</div>
 		<li>
 		<p>Your age <input name="age" size="5" type="text" />&nbsp;years old</p>
+				<div style="color:Tomato;">{{age_message}}</div>
 		</li>
 		<li>
 		<p>Your height&nbsp;&nbsp;<input name="height" size="5" type="text" />&nbsp;in cm</p>
@@ -43,10 +43,8 @@
 		&nbsp;</li>
 		<li>Intensity of those activities on a 1-10 scale:&nbsp;<input name="scale" size="5" type="text" /></li>
 		<li>Hiking experience in the last two months:&nbsp;<input name="experience" type="radio" value="yes" />&nbsp;Yes&nbsp;<input name="experience" type="radio" value="no" />No</li>
-	</ul>
 
 	<p style="text-align: center;"><span style="background-color:#FFF0F5;"><input name="CalculateButton" type="submit" value="Calculate" /></span></p>
-	</li>
 </ul>
 </form>
 </body>

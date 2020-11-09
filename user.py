@@ -123,8 +123,7 @@ class LevelRecommender(Recommender):
         if 6 <= user.get_age() <= 65:
             self.score += 1
 
-        self.message = "Here is recommendations for you: \n" + \
-                       "Your maximal heart rate by age is " + str(user.calculate_maximal_heart_rate()) + "\n"
+        self.message = "Your maximal heart rate by age is " + str(user.calculate_maximal_heart_rate()) + "\n"
 
         if 0 <= self.score <= 4:
             self._level = LevelScale.LOW
@@ -186,7 +185,7 @@ class AgeVerifier:
 
     def verify_me(self, user):
         my_age = user.get_age()
-        if my_age < self.MINIMAL_AGE:
+        if my_age != '' and my_age < self.MINIMAL_AGE:
             self.message = "You're not old enough to use this fitness level recommendation"
             return False
 
@@ -203,11 +202,16 @@ class CompletionVerifier:
         self.message = ""
 
     def verify_me(self, user):
-        if user.get_age() is 0 or user.get_activity_level() is None \
-            or user.get_height() is 0 or user.get_weight() is 0 \
-                or user.get_hiking_exp() is None or user.get_scale() is 0 \
-                or user.get_talk_test() is None or user.get_general_health() is None:
-            self.message = "All of questions need to be filled for calculating fitness level recommendation for you"
+        if user.get_age() == '' or user.get_age() is None\
+            or user.get_activity_level() == '' or user.get_activity_level() is None\
+                or user.get_height() == '' or user.get_height() is None\
+                or user.get_weight() == '' or user.get_weight() is None\
+                or user.get_hiking_exp() == '' or user.get_hiking_exp() is None\
+                or user.get_scale() == '' or user.get_scale() is None\
+                or user.get_talk_test() == '' or user.get_talk_test() is None\
+                or user.get_general_health() == '' or user.get_general_health() is None:
+            self.message = "All of questions need to be filled for calculating fitness level recommendation for you. " \
+                           "Please backtrack to fill out the missing date."
             return False
 
         return True
