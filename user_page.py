@@ -1,14 +1,28 @@
 from flask import Flask
-from flask import render_template, request
+from flask import render_template, request, redirect
 
 from user import User, AgeVerifier, CompletionVerifier, LevelRecommender
 
 app = Flask(__name__)
 
+user = User(age=None,
+            height=None,
+            weight=None,
+            scale=None,
+            general_health=None,
+            talk_test=None,
+            activity_level=None,
+            hiking_exp=None)
 
-@app.route("/")
-def index():
-    return "<button> Index! </button>"
+
+@app.route('/')
+def home():
+    return render_template("trails.html");
+
+
+@app.route('/profile')
+def profile():
+    return render_template("user_page.html");
 
 
 @app.route("/user_profile", methods=['POST', 'GET'])
@@ -20,23 +34,23 @@ def user_profile():
         profile = request.form
         age = profile.get('age')
         if age is not None:
-            age = int(age)
+            user.set_age(int(age))
         height = profile.get('height')
         if height is not None:
-            height = float(height)
+            user.set_height(float(height))
         weight = profile.get('weight')
         if weight is not None:
-            weight = float(weight)
+            user.set_weight(float(weight))
         scale = profile.get('scale')
         if scale is not None:
-            scale = int(scale)
-        general_health = profile.get('health')
-        talk_test = profile.get('talk')
-        activity_level = profile.get('activity')
-        hiking_exp = profile.get('experience')
+            user.set_scale(int(scale))
+        user.set_general_health(profile.get('health'))
+        user.set_talk_test(profile.get('talk'))
+        user.set_activity_level(profile.get('activity'))
+        user.set_hiking_exp(profile.get('experience'))
 
-        user = User(age, height, weight, scale, general_health, talk_test, activity_level, hiking_exp)
         age_verify = AgeVerifier()
+        print(user.get_age())
         if not age_verify.verify_me(user):
             return render_template("user_page.html", age_message=age_verify.print_message())
 
@@ -44,15 +58,15 @@ def user_profile():
         if not comp_verify.verify_me(user):
             return render_template("user_page.html", completion_message=comp_verify.print_message())
 
-        return render_template("profile.html")
+        return redirect('/my_profile')
 
 
 @app.route('/my_profile', methods=['POST', 'GET'])
-def calculate_level(user):
-    if request.method == 'POST':
-        my_level = LevelRecommender()
-        my_level.recommend_me(user)
-        return my_level.print_message()
+def calculate_level():
+    my_level = LevelRecommender()
+    my_level.recommend_me(user)
+    return render_template("my_profile.html", level=my_level.print_message())
+
 
 if __name__ == "__main__":
     app.run(debug=True)
