@@ -1,9 +1,8 @@
 from trail import Trail, TrailList
-from pprint import pprint
 import requests
 import os
 import json
-"https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200932678-b6a96c1d20b73dc70bee2145176ce8a7"
+
 class Trail_API:
     def __init__(self, latitude, longitude, distance=10):
         self._latitude = latitude
