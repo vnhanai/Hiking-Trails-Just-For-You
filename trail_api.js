@@ -1,4 +1,6 @@
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+
+// import Trail, TrailList from Trail;
+var https = require('https');
 
 class Trail_API {
     constructor (latitude, longitude, distance = 10) {
@@ -13,19 +15,37 @@ class Trail_API {
         // The full URL for the request
         this.url = `https://www.hikingproject.com/data/get-trails?lat=${this._latitude}&lon=${this._longitude}&maxDistance=${this._distance}&key=${this._key}`;
     }
+
+    makeTrailList(trailData){
+        var trails = trailData.trails;
+        for (var i = 0; i < trails.length; i++) {
+            // Trails arguments (name, distanceAway, length, elevation, description, latitude, longitude, difficulty)
+            console.log(trails[i].name,
+            trails[i].longitude,
+            trails[i].latitude,
+            trails[i].length,
+            trails[i].summary,
+            trails[i].difficulty,
+            
+            trails[i].conditionStatus,
+            trails[i].conditionDetails);
+        }
+
+    }
     
     getTrails(){
-        var request = new XMLHttpRequest();
-        request.open('GET', this.url, true);
-        request.onload = function () {
-            console.log(request);
-            if (request.status === 200){
-                console.log(JSON.parse(request.response));
-            } else {
-                console.log(`error ${request.status} ${request.statusText}`);
-            }
-        };
-        request.send();
+        // Returns a TrailList object
+        https.get(this.url, res => {
+            var data = '';
+            
+            res.on('data', chunk => {
+                data += chunk;
+            });
+
+            res.on('end', ()=> {
+                this.makeTrailList(JSON.parse(data));
+            });         
+        }).end();
     }
 
 }
