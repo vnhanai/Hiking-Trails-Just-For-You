@@ -4,7 +4,9 @@
 <head>
   <meta charset="utf-8">
   <title></title>
-  <link href="{{ url_for('static', filename='css/trails.css') }}" rel="stylesheet">
+  {{#each css}}
+    <link rel="stylesheet", href ="./css/{{this}}">
+  {{/each}}
 </head>
 
 <body>
@@ -26,18 +28,19 @@
   		</form>
 
   	<div class = "trailList">
-        {#each trailList}
-  		<div id = "trail">
-            <b>{{this.getName()}}</b>
-            <span>Trail Length: {{this.getLength()}}</span>
-            <span>Trail Elevation: {{this.getElevation()}}</span>
-            <button> More Information </button>
-  		</div>
-        {/each}
+      {{#each trailList}}
+    		<div id = "trail">
+              <b>{{this.name}}</b>
+              <span>Trail Length: {{this.length}}</span>
+              <span>Trail Difficulty: {{this.difficulty}}</span>
+              <button> More Information </button>
+    		</div>
+      {{/each}}
   	</div>
   </div>
-
-    <script type=text/javascript src="{{url_for('static', filename='trails.js') }}"></script>
+    {{#each js}}
+      <link href="./js/{{this}}", rel="stylesheet">
+    {{/each}}
 </body>
 
 </html>

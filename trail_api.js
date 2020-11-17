@@ -30,7 +30,7 @@ class Trail_API {
             trails[i].conditionStatus,
             trails[i].conditionDetails);
         }
-
+        return trails;
     }
     
     getTrails(){
@@ -43,14 +43,16 @@ class Trail_API {
             });
 
             res.on('end', ()=> {
-                this.makeTrailList(JSON.parse(data));
+                return this.makeTrailList(JSON.parse(data));
             });         
         }).end();
     }
 
 }
 
-var la_latitude = 40.0274;
-var la_longitude = -105.2519;
-var myTrails = new Trail_API(la_latitude, la_longitude);
-myTrails.getTrails();
+//var la_latitude = 40.0274;
+//var la_longitude = -105.2519;
+//var myTrails = new Trail_API(la_latitude, la_longitude);
+//myTrails.getTrails();
+
+module.exports = Trail_API;
