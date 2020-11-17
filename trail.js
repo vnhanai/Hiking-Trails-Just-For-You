@@ -24,25 +24,25 @@ class Trail{
 		this.location = new Coordinates(longitude, latitude);
 		this.difficulty = difficulty;
 	}
-	getName(){
+	get getName(){
 		return this.name;
 	}
-	getDistanceAway(){
+	get getDistanceAway(){
 		return this.distanceAway;
 	}
-	getLength(){
+	get getLength(){
 		return this.length;
 	}
-	getElevation(){
+	get getElevation(){
 		return this.elevation;
 	}
-	getDescription(){
+	get getDescription(){
 		return this.description;
 	}
-	getLocation(){
+	get getLocation(){
 		return this.location;
 	}
-	getDifficulty(){
+	get getDifficulty(){
 		return this.difficulty;
 	}
 }
@@ -62,10 +62,10 @@ class TrailList{
 		for(var i = index; i < trails.length-1; i++){
 			this.trails[i] = this.trails[i+1];
 		}
-		trails.pop();
+		this.trails.pop();
 	}
 	getLength(){
-		return trails.length;
+		return this.trails.length;
 	}
 }
 

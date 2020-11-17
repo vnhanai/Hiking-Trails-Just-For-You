@@ -50,7 +50,7 @@ class Trail_API {
     getTrails(){
         var trailArray = [];
         for (var i = 0; i < this.allTrails.getLength(); i++){
-            trailArray.append(this.allTrails.getTrail(i));
+            trailArray.push(this.allTrails.getTrail(i));
         }
         return trailArray;
     }
