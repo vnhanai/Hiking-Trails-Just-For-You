@@ -2,7 +2,7 @@ var express = require('express');
 const path = require('path');
 
 //import Trail_API
-const Trail_API = require('./trail_api.js');
+const Trail_API = require('./local_trail_api.js').Trail_API;
 
 //use express handlebars
 var app = express();
@@ -17,16 +17,16 @@ app.set('port', 3000);
 app.use(express.static(path.join(__dirname, '/static')));
 
 //load user page as home display
-app.get('/',function(req,res){
+app.get('/',function(req, res){
   res.render('user');
 });
 
 //load Trail display page
-app.get('/trails',function(req,res){
+app.get('/trails',function(req, res){
   la_latitude = 40.0274;
   la_longitude = -105.2519;
   //Default location is LA
-  res.render('trails', newLocation(la_latitude,la_longitude));
+  res.render('trails', newLocation(la_latitude, la_longitude));
 });
 
 //load Trail display after new location input
@@ -59,5 +59,5 @@ app.listen(app.get('port'), function(){
 //ping the API for the location of the trail and return the trailList
 function newLocation(latitude,longitude) {
   const myTrails = new Trail_API(latitude, longitude);
-  return trailList = myTrails.getTrails();
+  return myTrails.getTrails();
 }

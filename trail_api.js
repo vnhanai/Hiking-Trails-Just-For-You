@@ -1,58 +1,75 @@
 
-// import Trail, TrailList from Trail;
+var Coordinates = require('./trail.js').Coordinates;
+var Trail = require('./trail.js').Trail;
+var TrailList = require('./trail.js').TrailList;
 var https = require('https');
 
 class Trail_API {
     constructor (latitude, longitude, distance = 10) {
         // User's latitude
-        this._latitude = latitude;
+        this.latitude = latitude;
         // User's longitude
-        this._longitude = longitude;
+        this.longitude = longitude;
         // Distance away from user trails will be found
-        this._distance = distance;
+        this.distance = distance;
         // Josh's Trail Data API key
-        this._key = '200932678-b6a96c1d20b73dc70bee2145176ce8a7';
+        //'200932678-b6a96c1d20b73dc70bee2145176ce8a7'
+        this.keys = '200975933-0d4568298c034509b0d68a318458e7ef';
         // The full URL for the request
         this.url = `https://www.hikingproject.com/data/get-trails?lat=${this._latitude}&lon=${this._longitude}&maxDistance=${this._distance}&key=${this._key}`;
+        this.searchTrails()
+        .then(console.log("Trails received"))
+        .catch(err => console.log(err));
     }
 
-    makeTrailList(trailData){
-        var trails = trailData.trails;
+    makeTrailsList(trailData){
+        console.log(trailData);
+        this.allTrails = new TrailList();
         for (var i = 0; i < trails.length; i++) {
             // Trails arguments (name, distanceAway, length, elevation, description, latitude, longitude, difficulty)
-            console.log(trails[i].name,
-            trails[i].longitude,
-            trails[i].latitude,
-            trails[i].length,
-            trails[i].summary,
-            trails[i].difficulty,
-            
-            trails[i].conditionStatus,
-            trails[i].conditionDetails);
+            var aTrail = new Trail(trails[i].name,
+                0,
+                trails[i].length,
+                trails[i].height,
+                trails[i].summary,
+                trails[i].latitude,
+                trails[i].longitude,
+                trails[i].difficulty)
+                this.allTrails.addTrail(aTrail);
         }
-        return trails;
     }
     
-    getTrails(){
-        // Returns a TrailList object
-        https.get(this.url, res => {
-            var data = '';
-            
-            res.on('data', chunk => {
-                data += chunk;
-            });
+    searchTrails(){
+        // var success = 0;
+        // while (success === 0){
 
-            res.on('end', ()=> {
-                return this.makeTrailList(JSON.parse(data));
-            });         
-        }).end();
+        // }
+        return new Promise((resolve, reject) => {
+            https.get(this.url, res => {
+                var data = '';
+                
+                res.on('data', chunk => {
+                    data += chunk;
+                });
+    
+                res.on('end', ()=> {
+                    this.makeTrailsList(data);
+                    resolve();
+                });         
+            }).end();
+        })
+        // Returns a TrailList object
+        
+    }
+
+    getTrails(){
+        var trailArray = [];
+        for (var i = 0; i < this.allTrails.getLength(); i++){
+            trailArray.append(this.allTrails.getTrail(i));
+        }
+        return trailArray;
     }
 
 }
 
-//var la_latitude = 40.0274;
-//var la_longitude = -105.2519;
-//var myTrails = new Trail_API(la_latitude, la_longitude);
-//myTrails.getTrails();
-
-module.exports = Trail_API;
+module.exports.Trail_API = Trail_API;

@@ -6,10 +6,10 @@ class Coordinates{
 		this.latitude = latitude;
 	}
 	getLongitude(){
-		return longitude;
+		return this.longitude;
 	}
 	getLatitude(){
-		return latitude;
+		return this.latitude;
 	}
 }
 
@@ -21,50 +21,54 @@ class Trail{
 		this.length = length;
 		this.elevation = elevation;
 		this.description = description;
-		var location = new Coordinates(longitude, latitude);
+		this.location = new Coordinates(longitude, latitude);
 		this.difficulty = difficulty;
 	}
 	getName(){
-		return name;
+		return this.name;
 	}
 	getDistanceAway(){
-		return distanceAway;
+		return this.distanceAway;
 	}
 	getLength(){
-		return length;
+		return this.length;
 	}
 	getElevation(){
-		return elevation;
+		return this.elevation;
 	}
 	getDescription(){
-		return description;
+		return this.description;
 	}
 	getLocation(){
-		return location;
+		return this.location;
 	}
 	getDifficulty(){
-		return difficulty;
+		return this.difficulty;
 	}
 }
 
 //class for the list of trails
 class TrailList{
 	constructor(){
-		this.trails = trails[];
+		this.trails = [];
 	}
 	addTrail(newTrail){
-			trails.push(newTrail);
+			this.trails.push(newTrail);
 	}
 	getTrail(index){
-		return trails[index];
+		return this.trails[index];
 	}
 	deleteTrail(index){
 		for(var i = index; i < trails.length-1; i++){
-			trails[i] = trails[i+1];
+			this.trails[i] = this.trails[i+1];
 		}
 		trails.pop();
 	}
-	getLength()
-	{
+	getLength(){
 		return trails.length;
 	}
+}
+
+module.exports.Coordinates = Coordinates;
+module.exports.Trail = Trail;
+module.exports.TrailList = TrailList;
