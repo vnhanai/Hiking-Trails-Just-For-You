@@ -23,7 +23,6 @@ class Trail_API {
     }
 
     makeTrailsList(trailData){
-        console.log(trailData);
         var trails = trailData.trails;
         this.allTrails = new TrailList();
         for (var i = 0; i < trails.length; i++) {
