@@ -26,14 +26,14 @@ app.get('/trails',function(req, res){
   la_latitude = 40.0274;
   la_longitude = -105.2519;
   //Default location is LA
-  res.render('trails', newLocation(la_latitude, la_longitude));
+  res.render('trails', {"trailList": newLocation(la_latitude, la_longitude)});
 });
 
 //load Trail display after new location input
 app.post('/trails',function(req,res){
   request_lat = 40.0274;
   request_long = -105.2519;
-  res.render('trails', newLocation(request_lat,request_long));
+  res.render('trails', {"trailList": newLocation(la_latitude, la_longitude)});
 });
 
 //error status 404
