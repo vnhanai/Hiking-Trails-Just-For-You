@@ -26,14 +26,14 @@
   		</form>
 
   	<div class = "trailList">
-        {% for trail in trails %}
+        {#each trailList}
   		<div id = "trail">
-            <b>{{trail.getName()}}</b>
-            <span>Trail Length: {{trail.getLength()}}</span>
-            <span>Trail Elevation: {{trail.getElevation()}}</span>
+            <b>{{this.getName()}}</b>
+            <span>Trail Length: {{this.getLength()}}</span>
+            <span>Trail Elevation: {{this.getElevation()}}</span>
             <button> More Information </button>
   		</div>
-        {% endfor %}
+        {/each}
   	</div>
   </div>
 
