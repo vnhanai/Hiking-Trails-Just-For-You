@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  
+  <link rel="stylesheet" href ="/css/trail_style.css">
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+  <div class = "header">
+  	<div class = "trailTab" class = "active"> Trails </div>
+  	<div class = "userTab"> Profile </div>
+  </div>
+
+<!-- Page Content -->
+  <div class = "content">
+  	<div class = "search">
+  		<h2> Find Trails </h2>
+  		<form method="POST" action = "/">
+  			<input type = "text" name = "zipcode" placeholder ="Enter Your Zip Code"> </input>
+  			<!-- Get the location of the device-->
+  			<input type = "submit"> </input>
+        <p>OR</p>
+        <button name = "userLocation" id="userLocationButton">Use my location</button>
+  		</form>
+
+  	<div class = "trailList">
+      {{#each trailList}}
+    		<div id = "trail">
+              <b>{{this.name}}</b>
+              <span>Trail Length: {{this.length}}</span>
+              <span>Trail Difficulty: {{this.difficulty}}</span>
+              <button> More Information </button>
+    		</div>
+      {{/each}}
+  	</div>
+  </div>
+    {{#each js}}
+      <link href="./js/{{this}}", rel="stylesheet">
+    {{/each}}
+<script src="/js/location.js"></script>
+</body>
+
+</html>
