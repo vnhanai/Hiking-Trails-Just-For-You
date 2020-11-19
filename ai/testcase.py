@@ -3,7 +3,7 @@
 # Description: This is the test case for an adult user
 # who filled all questions and who misses answering a question.
 
-from ai.user import User, AgeVerifier, CompletionVerifier, LevelRecommender
+from user import User, AgeVerifier, CompletionVerifier, LevelRecommender
 print("Test Case1" + "\n")
 user_1 = User(age=30, height=170, weight=80, scale=8,
               general_health="healthy", talk_test = "rapidly breathe and can not hold the talk",
