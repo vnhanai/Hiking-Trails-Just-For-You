@@ -2,45 +2,48 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title></title>
-  <link href="trail_style.css" rel="stylesheet">
+  <meta charset="utf-8"/>
+  <title>trails</title>
+    <link rel="stylesheet" type="text/css" href="style.css"> </link>
 </head>
-
 <body>
-
 <!-- Navigation Bar -->
-  <div class = "header">
-  	<div class = "trailTab" class = "active"> Trails </div>
-  	<div class = "userTab"> Profile </div>
-  </div>
+<!--  <div class = "header">-->
+<!--  	<div class = "trailTab" class = "active"> Trails </div>-->
+<!--  	<div class = "userTab"> Profile </div>-->
+<!--  </div>-->
+<form action="profile" method="get">
+    <button name="profile" type="submit" >Profile</button>
+</form>
+<br/>
+<input name="just_for_you " type="submit" value="Just for You" /></span></strong></em></p>
+<input name="gear_clothes " type="submit" value="Gears and Clothing" /></span></strong></em></p>
+
+
 
 <!-- Page Content -->
   <div class = "content">
   	<div class = "search">
   		<h2> Find Trails </h2>
-  		<form>
-  			<input type = "text" value = "Zip Code"> </input>
+  		<form method="POST" action = "/">
+  			<input type = "text" name = "zipcode" value = "Enter Your Zip Code"> </input>
   			<!-- Get the location of the device-->
-  			<input type = "submit" value = "Get Your Location" class = "getLocation">  </input>
-  			<!-- Use the entered location-->
-  			<input type = "submit" class = "enteredLocation"> </input>
-
+  			<input type = "submit"> </input>
   		</form>
 
   	<div class = "trailList">
         {% for trail in trails %}
   		<div id = "trail">
-            <li>{{trail.getName()}}</li>
-            <li>{{trail.getDescription()}}</li>
-            <li>Length: {{trail.getLength()}}</li>
-            <li>Elevation: {{trail.getElevation()}}</li>
+            <b>{{trail.getName()}}</b>
+            <span>Trail Length: {{trail.getLength()}}</span>
+            <span>Trail Elevation: {{trail.getElevation()}}</span>
+            <button> More Information </button>
   		</div>
         {% endfor %}
   	</div>
   </div>
 
-  <script src="js/script.js"></script>
+    <script type=text/javascript src="{{url_for('static', filename='trails.js') }}"></script>
 </body>
 
 </html>
