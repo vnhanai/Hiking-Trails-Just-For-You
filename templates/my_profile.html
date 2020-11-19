@@ -4,20 +4,33 @@
 	<title></title>
 </head>
 <body>
-<p><strong><span style="font-size:22px;">My Profile&nbsp;</span></strong></p>
+<p><span style="font-size:22px;"><strong>My Profile</strong></span></p>
+<p><span style="font-size:22px; float: right"><strong>Other Options:</strong></span></p>
+
+	<form action="profile" method="get">
+	<button name="recalculate" type="submit"style="float: right;"> Recalculate fitness level</button>
+	</form>
+
+<!--</form><input name="recalculate" type="button" value="Recalculate fitness level" /></strong></span></p>-->
+
+<!--<p><strong><span style="font-size:22px;">My Profile&nbsp;</span></strong></p>-->
 
 <p style="text-align: center;"><em><strong><span style="font-size:22px;">Here is recommendations for you:</span></strong></em></p>
 
 <p style="text-align: center;">&nbsp;</p>
 
 <p style="text-align: center;">&nbsp;</p>
+<div>{{level}}</div>
 
 <p style="text-align: center;">&nbsp;</p>
 
 <p style="text-align: center;">&nbsp;</p>
 
 <p style="text-align: center;"><em><strong><span style="font-size:22px;">
-	<div>{{level}}</div>
-	<input name="recalculate " type="submit" value="Recalculate" /></span></strong></em></p>
+
+<form action="/" style="float: center;" method="get">
+		<p style="text-align: center;"><span style="background-color:#FFF0F5;"><input name="find_trail" type="submit" value="Find Trails" /></span></p>
+</form>
+
 </body>
 </html>
