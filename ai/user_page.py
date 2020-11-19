@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import render_template, request, redirect
 
-from user import User, AgeVerifier, CompletionVerifier, LevelRecommender
+from ai.user import User, AgeVerifier, CompletionVerifier, LevelRecommender
 
 app = Flask(__name__)
 

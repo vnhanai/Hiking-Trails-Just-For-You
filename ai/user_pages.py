@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import render_template, request, redirect
 
-from newUser import Account, User, Activity, BMI, Health, Intensity, LevelRecommend, LevelScale
+from ai.newUser import Account, User, Activity, BMI, Health, Intensity, LevelRecommend, LevelScale
 
 app = Flask(__name__)
 account = Account()

@@ -1,8 +1,5 @@
-from trail import Trail, TrailList
-from pprint import pprint
+from ai.trail import Trail, TrailList
 import requests
-import os
-import json
 
 "https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200932678-b6a96c1d20b73dc70bee2145176ce8a7"
 
