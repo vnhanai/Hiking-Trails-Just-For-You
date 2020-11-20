@@ -20,13 +20,31 @@
   <div class = "content">
   	<div class = "search">
   		<h2> Find Trails </h2>
-  		<form method="POST" action = "/">
+  		<form method="POST" action = "/trails">
   			<input type = "text" name = "zipcode" placeholder ="Enter Your Zip Code"> </input>
   			<!-- Get the location of the device-->
   			<input type = "submit"> </input>
         <p>OR</p>
         <button name = "userLocation" id="userLocationButton">Use my location</button>
   		</form>
+
+    <div class = "justForYou">
+
+      <h2> Just For You </h2>
+
+      <form method ="POST" action = "/filter">
+        
+        <input type = "radio" value = "Easy" name = "difficulty">
+        <label for= "Easy">Easy</label> </br>
+        <input type = "radio" value = "Medium" name = "difficulty">
+        <label for= "Easy">Medium</label> </br>
+        <input type = "radio" value = "Hard" name = "difficulty">
+        <label for= "Easy">Hard</label> </br>
+
+        <input type="submit" value="Filter">
+      </form>
+    </div>
+
 
   	<div class = "trailList">
       {{#each trailList}}

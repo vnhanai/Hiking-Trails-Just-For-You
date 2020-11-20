@@ -34,8 +34,18 @@ app.get('/trails',function(req, res){
 //load Trail display after new location input
 app.post('/trails',function(req,res){
   // ** this area is not currently working **
+  zipcode = req.zipcode;
+  console.log("request zip code: ", zipcode);
   console.log("requested latitude: ", req.latitude);
   console.log("requested longitude: ", req.longitude);
+  request_lat = 40.0274;
+  request_long = -105.2519;
+  res.render('trails', {"trailList": newLocation(la_latitude, la_longitude)});
+});
+
+app.post('/filter',function(req,res){
+  // ** this area is not currently working **
+  console.log("requested difficulty: ", req.difficulty);
   request_lat = 40.0274;
   request_long = -105.2519;
   res.render('trails', {"trailList": newLocation(la_latitude, la_longitude)});
