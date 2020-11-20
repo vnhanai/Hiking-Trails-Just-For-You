@@ -4,7 +4,7 @@
 }
 
 .header div {
-	float:right;
+	float:left;
 	text-align:center;
 	background-color:#9FA4A9;
 	color:white;
@@ -19,7 +19,7 @@
 }
 .header div.active {
 	background-color:#C2D3CD;
-	color:red;
+	color:black;
 }
 .header div.active:hover {
 	background-color:#AFBFC0;
@@ -33,10 +33,14 @@
 	margin:10px;
 }
 
-#trailName {
+#trialName {
 	left: 150px;
 }
 
 #expand {
 	right:0px;
+}
+
+.justForYou {
+	padding: 10 10 10 10;
 }

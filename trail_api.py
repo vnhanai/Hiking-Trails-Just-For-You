@@ -1,11 +1,7 @@
 from trail import Trail, TrailList
-from pprint import pprint
 import requests
 import os
 import json
-
-"https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200932678-b6a96c1d20b73dc70bee2145176ce8a7"
-
 
 class Trail_API:
     def __init__(self, latitude, longitude, distance=10):
@@ -21,12 +17,10 @@ class Trail_API:
         self._data = r.json()
         all_trails = TrailList()
         for trail in self._data['trails']:
-            new_trail = Trail(trail['name'], None, trail['length'], trail['high'], trail['summary'], trail['latitude'],
-                              trail['longitude'], trail['difficulty'])
+            new_trail = Trail(trail['name'], None, trail['length'], trail['high'], trail['summary'], trail['latitude'], trail['longitude'], trail['difficulty'])
             all_trails.addTrail(new_trail)
         return all_trails
-
-
+    
 if __name__ == "__main__":
     la_latitude = 40.0274
     la_longitude = -105.2519
