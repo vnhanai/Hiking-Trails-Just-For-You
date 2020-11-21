@@ -5,6 +5,9 @@ const path = require('path');
 // ** This Trail_API is mock data because we were locked out of the API **
 const Trail_API = require('./local_trail_api.js').Trail_API;
 
+//converts a zipcode to a latitude and longitude
+const searchZip = require('./csv_parse.js').searchZip;
+
 //use express handlebars
 var app = express();
 
@@ -38,21 +41,22 @@ app.get('/trails',function(req, res){
 
 //load Trail display after new location input
 //apply difficulty from 'Just For You' filter
-//need to convert zipcode to latlong
+
 app.post('/trails',function(req,res){
+  latitude = 40.0274;
+  longitude = -105.2519;
   if (req.body.zipcode) {
     zipcode = req.body.zipcode;
     console.log("request zip code: ", zipcode);
+    latitude,longitude = searchZip(zipcode)
+    console.log(latitude,longitude);
   }
   if (req.body.difficulty) {
     request_diff = req.body.difficulty;
     console.log("requested difficulty: ", request_diff);
   }
 
-  la_latitude = 40.0274;
-  la_longitude = -105.2519;
-
-  res.render('trails', {"trailList": newLocation(la_latitude, la_longitude)});
+  res.render('trails', {"trailList": newLocation(latitude, longitude)});
 });
 
 //error status 404
@@ -79,31 +83,4 @@ app.listen(app.get('port'), function(){
 function newLocation(latitude,longitude) {
   const myTrails = new Trail_API(latitude, longitude);
   return myTrails.getTrails();
-}
-
-
-var csv = require('csv-parse');
-
-function searchCSV(zipcode) {
-  const output = [];
-
-  const parser = csv({
-    delimiter: ';';
-  })
-
-  parser.on('readable', function() {
-    let record;
-    while (record = parser.read()) {
-      output.push(record);
-    }
-  })
-
-  parser.on('error', function(err) {
-    console.error(err.message);
-  })
-
-  for item in output {
-    if 
-  }
-  return latitude, longitude;
 }
