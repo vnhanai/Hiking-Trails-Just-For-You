@@ -1,27 +1,30 @@
 <!doctype html>
 <html>
 <head>
-	<title>HTML Editor - Full Version</title>
+	<h1><span style="font-size:50px; color:#008080;margin:10px;">Hiking Trails just for You </span></h1>
+	<p><span style="font-size:20px;color:#008080"><em>Personalized trails fits your fitness levels and gear recommendations </em></span></p>
 </head>
+
 <body>
-<p><span style="font-size:22px;"><strong>User Page</strong></span></p>
-<p><span style="font-size:22px; float: right"><strong>Other Options:</strong></span></p>
+	<div align = "middle", width = "400", height ="200">
+		<img src="{{url_for('static', filename = 'hiking_picture.jpg')}}"/>
+	</div>
+<br/>
+<p><span style="font-size:30px; float: left; color:#008080;"><strong>User Page</strong></span>
+<p><span style="font-size:30px; float: right; color:#008080;"><strong>Other Options</strong></span>
+</p>
 <br/>
 	<form action="/" method="get">
-	<button name="find_trails" type="submit"style="float: right;"> Find Trails</button>
+		<p style="text-align: right;"><input name="find_trails" type="submit" value="Find Trails"/></p>
+	</form>
+	<form action="for_you" method="get" >
+		<p style="text-align: right;"><input name="just_for_you" type="submit" value="Just for You"/></p>
 	</form>
 <br/>
-	<form action="for_you" method="get">
-	<button name="just_for_you" type="submit" style="float: right;">Just for You</button>
-</form>
-<br/>
-
-<p style="text-align: center;"><em><span style="font-size:22px;"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Please fill out the questionnaire&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+<p style="text-align: center;"><em><span style="font-size:22px;color:#008080"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Please fill out the questionnaire&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
 	</strong></span></em></p>
 
-<p><span data-lucid-content="{&quot;t&quot;:&quot;This task is optional. It only takes  you to few minutes to find out  your fitness level. First, fill out all  of the information; you might need a measuring tape and a  bathroom scale. Then, click \&quot;Calculate\&quot;.  &quot;,&quot;m&quot;:[{&quot;s&quot;:0,&quot;n&quot;:&quot;s&quot;,&quot;v&quot;:22.22222222222222,&quot;e&quot;:212},{&quot;s&quot;:0,&quot;n&quot;:&quot;c&quot;,&quot;v&quot;:&quot;333333ff&quot;,&quot;e&quot;:212},{&quot;s&quot;:0,&quot;n&quot;:&quot;fc&quot;,&quot;v&quot;:&quot;Oblique&quot;,&quot;e&quot;:212},{&quot;s&quot;:0,&quot;n&quot;:&quot;i&quot;,&quot;v&quot;:true,&quot;e&quot;:212},{&quot;s&quot;:0,&quot;n&quot;:&quot;fid&quot;,&quot;v&quot;:8,&quot;e&quot;:212}]}" data-lucid-type="application/vnd.lucid.text"><span style="font-size:16.666666666666664px;color:#333333;font-style:italic;">This task is optional. It only takes you few minutes to find out your fitness level. </span></span></p>
-
-<p><span data-lucid-content="{&quot;t&quot;:&quot;This task is optional. It only takes  you to few minutes to find out  your fitness level. First, fill out all  of the information; you might need a measuring tape and a  bathroom scale. Then, click \&quot;Calculate\&quot;.  &quot;,&quot;m&quot;:[{&quot;s&quot;:0,&quot;n&quot;:&quot;s&quot;,&quot;v&quot;:22.22222222222222,&quot;e&quot;:212},{&quot;s&quot;:0,&quot;n&quot;:&quot;c&quot;,&quot;v&quot;:&quot;333333ff&quot;,&quot;e&quot;:212},{&quot;s&quot;:0,&quot;n&quot;:&quot;fc&quot;,&quot;v&quot;:&quot;Oblique&quot;,&quot;e&quot;:212},{&quot;s&quot;:0,&quot;n&quot;:&quot;i&quot;,&quot;v&quot;:true,&quot;e&quot;:212},{&quot;s&quot;:0,&quot;n&quot;:&quot;fid&quot;,&quot;v&quot;:8,&quot;e&quot;:212}]}" data-lucid-type="application/vnd.lucid.text"><span style="font-size:16.666666666666664px;color:#333333;font-style:italic;">First, fill all of the information; you might need a measuring tape and a bathroom scale. Then, click &quot;Calculate&quot;.&nbsp;&nbsp;</span></span></p>
+<p align = "middle"><span data-lucid-content="{&quot;t&quot;:&quot;This task is optional. It only takes  you to few minutes to find out  your fitness level. First, fill out all  of the information; you might need a measuring tape and a  bathroom scale. Then, click \&quot;Calculate\&quot;.  &quot;,&quot;m&quot;:[{&quot;s&quot;:0,&quot;n&quot;:&quot;s&quot;,&quot;v&quot;:22.22222222222222,&quot;e&quot;:212},{&quot;s&quot;:0,&quot;n&quot;:&quot;c&quot;,&quot;v&quot;:&quot;333333ff&quot;,&quot;e&quot;:212},{&quot;s&quot;:0,&quot;n&quot;:&quot;fc&quot;,&quot;v&quot;:&quot;Oblique&quot;,&quot;e&quot;:212},{&quot;s&quot;:0,&quot;n&quot;:&quot;i&quot;,&quot;v&quot;:true,&quot;e&quot;:212},{&quot;s&quot;:0,&quot;n&quot;:&quot;fid&quot;,&quot;v&quot;:8,&quot;e&quot;:212}]}" data-lucid-type="application/vnd.lucid.text"><span style="font-size:16.666666666666664px;color:#333333;font-style:italic;">First, fill all of the information; you might need a measuring tape and a bathroom scale. Then, click &quot;Calculate&quot;.&nbsp;&nbsp;</span></span></p>
 
 <form action="user_profile" enctype="multipart/form-data" id="questionnaire" method="post" name="questionnaire" target="_self">
 <p>&nbsp;</p>
