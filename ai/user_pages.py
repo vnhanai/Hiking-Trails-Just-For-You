@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, url_for
 
 from new_user import Account, User, Activity, BMI, Health, Intensity, LevelRecommend, LevelScale
 
@@ -21,7 +21,7 @@ def home():
 
 @app.route('/profile', methods=['POST', 'GET'])
 def profile():
-    return render_template("user_page.html");
+    return render_template("user_page.html")
 
 
 @app.route("/user_profile", methods=['POST', 'GET'])
