@@ -1,12 +1,17 @@
 var express = require('express');
 const path = require('path');
 
-//import Trail_API
+//const Trail_API = require('./trail_api.js').Trail_API;
 // ** This Trail_API is mock data because we were locked out of the API **
 const Trail_API = require('./local_trail_api.js').Trail_API;
 
 //use express handlebars
 var app = express();
+
+//add data parsers
+app.use(express.urlencoded());
+app.use(express.json());
+
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 
 app.engine('handlebars', handlebars.engine);
@@ -32,22 +37,21 @@ app.get('/trails',function(req, res){
 });
 
 //load Trail display after new location input
+//apply difficulty from 'Just For You' filter
+//need to convert zipcode to latlong
 app.post('/trails',function(req,res){
-  // ** this area is not currently working **
-  zipcode = req.zipcode;
-  console.log("request zip code: ", zipcode);
-  console.log("requested latitude: ", req.latitude);
-  console.log("requested longitude: ", req.longitude);
-  request_lat = 40.0274;
-  request_long = -105.2519;
-  res.render('trails', {"trailList": newLocation(la_latitude, la_longitude)});
-});
+  if (req.body.zipcode) {
+    zipcode = req.body.zipcode;
+    console.log("request zip code: ", zipcode);
+  }
+  if (req.body.difficulty) {
+    request_diff = req.body.difficulty;
+    console.log("requested difficulty: ", request_diff);
+  }
 
-app.post('/filter',function(req,res){
-  // ** this area is not currently working **
-  console.log("requested difficulty: ", req.difficulty);
-  request_lat = 40.0274;
-  request_long = -105.2519;
+  la_latitude = 40.0274;
+  la_longitude = -105.2519;
+
   res.render('trails', {"trailList": newLocation(la_latitude, la_longitude)});
 });
 
@@ -75,4 +79,31 @@ app.listen(app.get('port'), function(){
 function newLocation(latitude,longitude) {
   const myTrails = new Trail_API(latitude, longitude);
   return myTrails.getTrails();
+}
+
+
+var csv = require('csv-parse');
+
+function searchCSV(zipcode) {
+  const output = [];
+
+  const parser = csv({
+    delimiter: ';';
+  })
+
+  parser.on('readable', function() {
+    let record;
+    while (record = parser.read()) {
+      output.push(record);
+    }
+  })
+
+  parser.on('error', function(err) {
+    console.error(err.message);
+  })
+
+  for item in output {
+    if 
+  }
+  return latitude, longitude;
 }
