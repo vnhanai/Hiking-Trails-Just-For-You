@@ -21,7 +21,7 @@ def home():
 
 @app.route('/profile', methods=['POST', 'GET'])
 def profile():
-    return render_template("user_page.html");
+    return render_template("user_page.html")
 
 
 @app.route("/user_profile", methods=['POST', 'GET'])

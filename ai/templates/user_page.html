@@ -4,12 +4,10 @@
 	<h1><span style="font-size:50px; color:#008080;margin:10px;">Hiking Trails just for You </span></h1>
 	<p><span style="font-size:20px;color:#008080"><em>Personalized trails fits your fitness levels and gear recommendations </em></span></p>
 </head>
-
 <body>
-	<div align = "middle", width = "400", height ="200">
-		<img src="{{url_for('static', filename = 'hiking_picture.jpg')}}"/>
+	<div align = "middle">
+		<img src="{{url_for('static', filename = 'hiking_picture.jpg')}}", weight = "500px" height = "300px"/>
 	</div>
-<br/>
 <p><span style="font-size:30px; float: left; color:#008080;"><strong>User Page</strong></span>
 <p><span style="font-size:30px; float: right; color:#008080;"><strong>Other Options</strong></span>
 </p>
@@ -49,7 +47,7 @@
 		<p>Your physical activity&nbsp;&nbsp;<input name="activity" type="radio" value="Health seeker" />&nbsp;Health seeker&nbsp;&nbsp;<input name="activity" type="radio" value="Active adult" />Active adult&nbsp;<input name="activity" type="radio" value="Athletic" />&nbsp;Athletic&nbsp;<input name="activity" type="radio" value="Elite athletic" />Elite athletic</p>
 		</li>
 		<li>
-		<p>Your medical heath&nbsp; &nbsp; &nbsp;&nbsp;<input name="health" type="radio" value="healthy" />&nbsp;healthy&nbsp;<input name="health" type="radio" value="has medical conditions" />&nbsp;has gerenal condition</p>
+		<p>Your medical heath&nbsp; &nbsp; &nbsp;&nbsp;<input name="health" type="radio" value="healthy" />&nbsp;healthy&nbsp;<input name="health" type="radio" value="has medical conditions" />&nbsp;has medical conditions</p>
 		</li>
 		<li>
 		<p>Your talk during those activities&nbsp;<input name="talk" type="radio" value="breathe easy" />&nbsp;easy breathe and talk&nbsp;</p>
