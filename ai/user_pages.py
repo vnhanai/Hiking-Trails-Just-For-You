@@ -1,7 +1,9 @@
 from flask import Flask
 from flask import render_template, request, redirect, url_for
-
 from new_user import Account, User, Activity, BMI, Health, Intensity, LevelRecommend, LevelScale
+import sqlite3
+import constant
+
 
 app = Flask(__name__)
 account = Account()
@@ -58,16 +60,57 @@ def user_profile():
 
         if not my_level.verify_me():
             return render_template("user_page.html", completion_message=my_level.get_message())
-
         return redirect('/my_profile')
 
 
 @app.route('/my_profile', methods=['POST', 'GET'])
 def calculate_level():
     score = my_level.my_fitness_level()
-    fitness_score = level.my_level(score)
+    level.my_level(score)
+    my_id = account.get_email()
+    my_fitness_level = level.get_message()
+    conn = sqlite3.connect('new_user.db')
+    c = conn.cursor()
+    sql_str = "INSERT INTO {table} VALUES('{id}', '{level}')".format(table=constant.USER_TABLE,
+                                                                     id=my_id, level=my_fitness_level)
+    # print(sql_str)
+    c.execute(sql_str)
+    conn.commit()
+    conn.close()
+
     return render_template("my_profile.html", level=level.get_message())
+
+
+@app.route('/old_user', methods=['POST', 'GET'])
+def get_old_user():
+    if request.method == 'GET':
+        return render_template("old_user.html")
+
+    if request.method == 'POST':
+        my_profile = request.form
+        email = my_profile.get('email')
+        account.set_email(email)
+        conn = sqlite3.connect(constant.DB_NAME)
+        c = conn.cursor()
+        print('email ', email)
+        c.execute("SELECT * FROM users WHERE id =:id", {'id': email})
+        user_record = c.fetchone()
+        print('user_record', user_record)
+        conn.commit()
+        conn.close()
+        return render_template("old_user_rec.html", level_record=user_record[1])
+
+
+@app.route('/old_user_rec', methods=['POST', 'GET'])
+def get_record():
+    conn = sqlite3.connect(':memory:')
+    c = conn.cursor()
+    with conn:
+        # c.execute("SELECT * FROM users WHERE Id =:Id", {'Id': my_id})
+        # c.execute("INSERT INTO users VALUES(':Id', ':level')", {'Id': my_id, 'level': my_fitness_level})
+        return render_template("old_user_rec.html", level_record=c.fetchone())
 
 
 if __name__ == "__main__":
     app.run(debug=True)
+

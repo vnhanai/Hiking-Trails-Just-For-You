@@ -272,6 +272,7 @@ class LevelRecommend:
         self._intensity = intensity
         self._health = health
         self._message = ""
+        # self._total_score = 0
 
     def verify_me(self):
         if self._user.get_age() == '' or self._user.get_age() is None \
@@ -296,11 +297,38 @@ class LevelRecommend:
         strenuous_score = self._intensity.strenuous_scale()
         health_score = self._health.healthy_score()
 
-        total_score = age_score + bmi_score + hiking_score + activity_score + \
-                      talk_score + strenuous_score + health_score
+        self._total_score = age_score + bmi_score + hiking_score + activity_score + \
+                            talk_score + strenuous_score + health_score
 
-        return total_score
+        return self._total_score
+
+    # def get_total_score(self):
+    #     return self._total_score
 
     def get_message(self):
         return self._message
 
+
+# class Represent(Account, LevelScale, LevelRecommend):
+#     account1 = Account
+#     level1 = LevelScale
+#     rec1 = LevelRecommend
+#
+#     def __init__(self, account, fitness_level, date):
+#         super().__init__()
+#         self._account = account
+#         self._fitness_level = fitness_level
+#         self.date = date
+#         self._score1 = 0
+#
+#     def account(self):
+#         self._account = self.account1.get_email()
+#         return self._account
+#
+#     def score(self):
+#         self._score1 = self.rec1.get_total_score(self)
+#         return self._score1
+#
+#     def level(self):
+#         self._fitness_level = self.level1.my_level(self.score())
+#         return self._fitness_level
