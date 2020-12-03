@@ -183,7 +183,7 @@ class Activity:
 
 
 class Intensity:
-    EASY_BREATHE = "easy breathe and talk"
+    EASY_BREATHE = "easily breathe and talk"
     MEDIUM_BREATHE = "breathe hard but still can talk"
     HARD_BREATHE = "rapidly breathe and can not hold the talk"
 
