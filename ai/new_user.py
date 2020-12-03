@@ -284,7 +284,7 @@ class LevelRecommend:
                 or self._intensity.get_talk_test() == '' or self._intensity.get_talk_test() is None \
                 or self._health.get_medical_health() == '' or self._health.get_medical_health() is None:
             self._message = "All of questions need to be filled for calculating fitness level recommendation for you. " \
-                            "Please backtrack to fill out the missing date."
+                            "Please backtrack to fill out the missing information."
             return False
         return True
 

@@ -5,7 +5,8 @@ c = conn.cursor()
 c.execute("""CREATE TABLE IF NOT EXISTS users (
                 id text,
                 level text)""")
-# c.execute("INSERT INTO users VALUES('vuai', 'moderate')")
+c.execute("INSERT INTO users VALUES('vuai', 'moderate')")
+
 # c.execute("DELETE FROM users")
 
 
